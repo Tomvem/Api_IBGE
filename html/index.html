@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <h1>Comparação Anual e Evolução Mensal de Produtos</h1>
+    </header>
+
+    <main>
+        <section class="card" id="CarregandoStatus">
+            <p>Carregando dados...</p>
+        </section>
+
+        <section class="card hidden" id="ErroStatus">
+            <p id="errorMessage">Erro ao carregar dados</p>
+            <button type="button" onclick="window.location.reload()">
+                Tentar novamente
+            </button>
+        </section>
+
+        <section class="card">
+            <h2>Filtros</h2>
+
+            <div class="filters-grid">
+                <div class="filter-block">
+
+                    <select id="FiltroGrupo_A">
+                        <option value="">Selecione o Grupo</option>
+                    </select>
+
+                    <select id="FiltroSubgrupo_A">
+                        <option value="">Selecione o Subgrupo</option>
+                    </select>
+
+                    <select id="FiltroItem_A">
+                        <option value="">Selecione o Item</option>
+                    </select>
+
+                    <select id="FiltroVariavel_A">
+                        <option value="">Selecione a Estatística</option>
+                    </select>
+
+                    <select id="FiltroPeriodo_A">
+                        <option value="">Selecione o Período</option>
+                    </select>
+                </div>
+
+                <div class="filter-block">
+
+                    <select id="FiltroGrupo_B">
+                        <option value="">Selecione o Grupo</option>
+                    </select>
+
+                    <select id="FiltroSubgrupo_B">
+                        <option value="">Selecione o Subgrupo</option>
+                    </select>
+
+                    <select id="FiltroItem_B">
+                        <option value="">Selecione o Item</option>
+                    </select>
+
+                    <select id="FiltroVariavel_B">
+                        <option value="">Selecione a Estatística</option>
+                    </select>
+
+                    <select id="FiltroPeriodo_B">
+                        <option value="">Selecione o Período</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons-container" style="margin-top: 15px;">
+                <button id="btnGerarGraficos" type="button">Gerar Gráficos</button>
+                <button id="LimparFiltro" type="button">Limpar Filtros</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Comparação Entre Produtos (2020-2026)</h2>
+            <div class="chart-container" style="position: relative;">
+                <canvas id="chartComparacao"></canvas>
+                <button class="changeChartBtn" data-target="chartComparacao"
+                    style="position: absolute; top: -22px; right: 10px;">
+                    Trocar Gráfico
+                </button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Comparação Em Relação a Variação Mensal</h2>
+            <div class="chart-container" style="position: relative;">
+                <canvas id="chartCategorias"></canvas>
+                <button class="changeChartBtn" data-target="chartCategorias"
+                    style="position: absolute; top: -22px; right: 10px;">
+                    Trocar Gráfico
+                </button>
+            </div>
+        </section>
+
+        <div class="tabelas-container">
+            <section class="card">
+                <h2>Tabela Comparativa Anual</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>VALORES</th>
+                            <th>PORCENTAGEM</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Tabela1"></tbody>
+                </table>
+            </section>
+
+            <section class="card" style="position: relative;">
+                <h2>Comparação Entre Indices</h2>
+
+                <div style="position: absolute; top: 15px; right: 15px;">
+                    <select id="AlternarMetricaTabela" style="padding: 5px; border-radius: 4px;">
+                        <option value="var_mensal">Variação Mensal</option>
+                        <option value="var_12m">Variação acumulada em 12 meses</option>
+                        <option value="peso_mensal">Peso Mensal</option>
+                    </select>
+                </div>
+
+                <table>
+                    <thead id="TabelaComparativaCabecalho">
+                        <tr>
+                            <th>Mês</th>
+                            <th>A</th>
+                            <th>Mês</th>
+                            <th>B</th>
+                            <th>Diferença</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TabelaComparativaCorpo"></tbody>
+                </table>
+            </section>
+        </div>
+
+    </main>
+</body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/javascript.js" defer></script>
+</html>
+
